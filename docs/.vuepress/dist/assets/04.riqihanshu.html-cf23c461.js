@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-6daca624","path":"/docs/PHP/04.riqihanshu.html","title":"日期函数","lang":"en-US","frontmatter":{"title":"日期函数","date":"2023-02-15T00:00:00.000Z","tags":["php"]},"headers":[],"git":{},"filePathRelative":"docs/PHP/04.日期函数.md"}');export{t as data};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-4479c462","path":"/docs/ECMASript/04.jiantouhanshu.html","title":"箭头函数","lang":"en-US","frontmatter":{"title":"箭头函数","date":"2022-12-08T00:00:00.000Z","tags":["JavaScript","ECMASript"]},"headers":[{"level":3,"title":"箭头函数","slug":"箭头函数","link":"#箭头函数","children":[]}],"git":{},"filePathRelative":"docs/ECMASript/04.箭头函数.md"}');export{t as data};
