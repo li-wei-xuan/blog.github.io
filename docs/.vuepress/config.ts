@@ -2,30 +2,26 @@ import { defineUserConfig } from "vuepress";
 import { recoTheme } from 'vuepress-theme-reco';
 import { getChildren } from 'vuepress-sidebar-atuo';
 
-const logoUrl = 'images/logo.png'
+const logoUrl = 'images/logo.png' // logo
+const authorAvatar = 'images/head.jpg' // 头像
 export default defineUserConfig({
   title: "小博客",
-  description: "Just playing around",
+  description: "做好每一件简单的事",
+  locales: { // 语言配置
+    '/': { lang: 'zh-CN' }
+  },
+  head: [ // 头部
+    ['link', { rel: "icon", href: logoUrl }],
+    ['meta', { name: "viewport", content: "width=device-width,initial-scale=1,user-scalable=no" }]
+  ],
   theme: recoTheme({
     primaryColor: '#17adcb',
-    style: "@vuepress-reco/style-default",
     logo: logoUrl,
     author: "li",
-    authorAvatar: "images/head.jpg",
-    lastUpdatedText: "",
-    colorMode: 'dark', // dark, light
-    componentsDir:'./docs/.vuepress/components',
-    head: [ // 头部
-      ["link", {
-        "rel": "icon",
-        "href": logoUrl
-      }],
-      ["meta", {
-        "name": "viewport",
-        "content": "width=device-width,initial-scale=1,user-scalable=no"
-      }]
-    ],
-    // base:'docs',
+    authorAvatar,
+    lastUpdatedText: "Last Updated",
+    // colorMode: 'dark', // 样式颜色 dark, light
+    componentsDir: './docs/.vuepress/components', // 组件根目录
     // series 为原 sidebar
     series: {
       // 前端工程师
@@ -97,10 +93,16 @@ export default defineUserConfig({
         },
       ]
     },
+    // https://www.xicons.org/#/zh-CN 中的carbon
     navbar: [
-      { text: "首页", link: "/" },
+      {
+        text: "首页",
+        link: "/",
+        // icon: 'Home'
+      },
       {
         text: "web前端",
+        // icon: 'List',
         children: [
           { text: "HTML", link: "/docs/HTML/01.HTMLjibenjiegou" },
           { text: "CSS", link: "/docs/CSS/03.CSSjibenyangshihexuanzeqi" },
@@ -112,6 +114,7 @@ export default defineUserConfig({
       },
       {
         text: "PHP后端",
+        // icon: 'List',
         children: [
           { text: "PHP", link: "/docs/PHP/01.bianliangshujuleixing" },
           { text: "MySQL", link: "/docs/MySQL/01.SQLyuju" },
@@ -119,10 +122,22 @@ export default defineUserConfig({
           { text: "Shell", link: "/docs/Shell/01.Shelljieshao" }
         ],
       },
-      { text: "技术碎片", link: "/categories/interview/1/" },
-      { text: "标签", link: "/tags/interview/1/" },
-      { text: "面试题", link: "/docs/interview/" },
-      { text: "时间轴", link: "/timeline/" },
+      {
+        text: "技术碎片",
+        link: "/categories/interview/1/",
+        // icon: 'Categories'
+      },
+      {
+        text: "标签",
+        link: "/tags/interview/1/",
+        // icon: 'Tag'
+      },
+      {
+        text: "面试题",
+        link: "/docs/interview/",
+        // icon: 'Money'
+      },
+      // { text: "时间轴", link: "/timeline/" },
     ],
     // valineConfig 配置与 1.x 一致
     // valineConfig: {
@@ -135,6 +150,4 @@ export default defineUserConfig({
     //   // hideComments: true // 隐藏评论
     // },
   }),
-  // debug: true,
-  
 });

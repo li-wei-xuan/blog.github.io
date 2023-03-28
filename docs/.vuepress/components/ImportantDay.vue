@@ -12,10 +12,13 @@ export default {
     this.$nextTick(function () {
       this.demo();
     });
+    // setTimeout(()=>{
+    //   this.demo()
+    // }, 200)
   },
   methods: {
     demo() {
-      var myChart = echarts.init(this.$refs.main);
+      var myChart = echarts.init(document.getElementById('main'));
       var option = {
         tooltip: {
           trigger: "axis",
