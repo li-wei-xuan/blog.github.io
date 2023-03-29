@@ -7485,7 +7485,7 @@ vuepress-theme-reco@^2.0.0-beta.55:
 
 vuepress-vite@2.0.0-beta.50-pre.1:
   version "2.0.0-beta.61"
-  resolved "https://registry.npmmirror.com/vuepress-vite/-/vuepress-vite-2.0.0-beta.61.tgz#04058551e6be014e9f2dee14c5d8043b158e032d"
+  resolved "https://registry.yarnpkg.com/vuepress-vite/-/vuepress-vite-2.0.0-beta.61.tgz#04058551e6be014e9f2dee14c5d8043b158e032d"
   integrity sha512-4mcR8XSY5b36CYkPqF80WvoeGAEjTw6Cr9bMPHrPVSjG4qqyfVpdSdyRtXD+/5aLJB7r/L60J7PI1pKTci1+3w==
   dependencies:
     "@vuepress/bundler-vite" "2.0.0-beta.61"
