@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-52eed673","path":"/docs/PHP/05.shuxuehanshu.html","title":"数学函数","lang":"en-US","frontmatter":{"title":"数学函数","date":"2023-02-15T00:00:00.000Z","tags":["php"]},"headers":[{"level":3,"title":"number_format","slug":"number-format","link":"#number-format","children":[]}],"git":{},"filePathRelative":"docs/PHP/05.数学函数.md"}');export{e as data};
