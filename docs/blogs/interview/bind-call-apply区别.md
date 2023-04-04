@@ -1,5 +1,5 @@
 ---
-title: bind、call、apply 区别
+title: bind-call-apply 区别
 date: 2022-10-10
 tags:
  - interview

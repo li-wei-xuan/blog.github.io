@@ -1,5 +1,5 @@
 ---
-title: var、 let 、const 区别
+title: var-let-const 区别
 date: 2022-10-08
 tags:
  - interview

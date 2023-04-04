@@ -1,5 +1,5 @@
 ---
-title: get、post 区别
+title: get-post 区别
 date: 2022-10-10
 tags:
  - interview
