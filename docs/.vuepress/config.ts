@@ -107,7 +107,7 @@ export default defineUserConfig({
           { text: "HTML", link: "/docs/HTML/01.HTMLjibenjiegou" },
           { text: "CSS", link: "/docs/CSS/03.CSSjibenyangshihexuanzeqi" },
           { text: "JavaScript", link: "/docs/JavaScript/01.shuzuduixiang" },
-          { text: "ECMASript", link: "/docs/ECMASript/01.let、constguanjianzi" },
+          { text: "ECMASript", link: "/docs/ECMASript/01.let-constguanjianzi" },
           { text: "Vue", link: "/docs/Vue/01.vueshili" },
           { text: "Git", link: "/docs/Git/01.gitjibenmingling" }
         ],
