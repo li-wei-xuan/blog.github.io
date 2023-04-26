@@ -12,7 +12,8 @@ banner: # banner 模块的配置
   heroImageStyle:
     maxWidth: 200px
     margin: 0 auto 2rem
-  bgImage: images/bg.jpg
+  bgImage: https://img.webvipzone.com/images/bg.jpg
+  # bgImage: images/bg.jpg #本地
   # bgImageStyle:
   #   height: 450px
 bannerBrand:
@@ -26,8 +27,8 @@ bannerBrand:
   socialLinks:
     - { icon: 'LogoGithub', link: 'https://github.com/li-wei-xuan' }
 blog:
-  socialLinks:
-    - { icon: 'LogoGithub', link: 'https://github.com/li-wei-xuan' }
+  # socialLinks:
+  #   - { icon: 'LogoGithub', link: 'https://github.com/li-wei-xuan' }
 footer: # 底部模块的配置
   record: 域名备案文案
   recordLink: 域名备案地址

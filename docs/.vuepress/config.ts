@@ -2,8 +2,15 @@ import { defineUserConfig } from "vuepress";
 import { recoTheme } from 'vuepress-theme-reco';
 import { getChildren } from 'vuepress-sidebar-atuo';
 
-const logoUrl = 'images/logo.png' // logo
-const authorAvatar = 'images/head.jpg' // 头像
+let http = 'https://img.webvipzone.com/' // 线上地址
+let logoUrl = 'images/logo.png' // logo
+let authorAvatar = 'images/head.jpg' // 头像
+
+if(process.env.NODE_ENV !== 'development') {
+  logoUrl = http + logoUrl // logo
+  authorAvatar = http + authorAvatar // 头像
+}
+
 export default defineUserConfig({
   title: "小博客",
   description: "做好每一件简单的事",
@@ -137,7 +144,6 @@ export default defineUserConfig({
         link: "/docs/interview/",
         // icon: 'Money'
       },
-      // { text: "时间轴", link: "/timeline/" },
     ],
     // valineConfig 配置与 1.x 一致
     // valineConfig: {
