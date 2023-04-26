@@ -38,7 +38,7 @@ case $num in
     echo "跳转仓库成功"
     git pull
     echo "拉取代码成功"
-    cp -r C:/Users/li/Desktop/newblog/public/* C:/Users/li/Desktop/blog.github.io
+    cp -r F:/blog-v/* F:/li-wei-xuan.github.io
     echo "复制内容成功"
     git add .
     git commit -m "$(date "+%Y-%m-%d %H:%M:%S")"
