@@ -34,11 +34,11 @@ case $num in
     echo '开始打包'
     npm run build || yarn build
     echo "打包成功"
-    cd C:/Users/li/Desktop/blog.github.io
+    cd F:/li-wei-xuan.github.io
     echo "跳转仓库成功"
     git pull
     echo "拉取代码成功"
-    cp -r F:/blog-v2/.vuepress/dist/* F:/li-wei-xuan.github.io
+    cp -r F:/blog-v2/docs/.vuepress/dist/* F:/li-wei-xuan.github.io
     echo "复制内容成功"
     git add .
     git commit -m "$(date "+%Y-%m-%d %H:%M:%S")"
