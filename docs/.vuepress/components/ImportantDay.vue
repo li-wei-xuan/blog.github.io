@@ -12,13 +12,10 @@ export default {
     this.$nextTick(function () {
       this.demo();
     });
-    // setTimeout(()=>{
-    //   this.demo()
-    // }, 200)
   },
   methods: {
     demo() {
-      var myChart = echarts.init(document.getElementById('main'));
+      var myChart = echarts.init(document.getElementById("main"));
       var option = {
         tooltip: {
           trigger: "axis",
@@ -40,7 +37,20 @@ export default {
         xAxis: {
           type: "category",
           boundaryGap: false,
-          data: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+          data: [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月",
+          ],
         },
         yAxis: {
           type: "value",
@@ -64,7 +74,7 @@ export default {
           {
             name: "2023",
             type: "line",
-            data: [21, 19, 23],
+            data: [21, 19, 23, 29],
           },
         ],
       };
@@ -73,5 +83,9 @@ export default {
     },
   },
 };
+
+window.addEventListener("resize", function () {
+  echarts.init(document.getElementById("main")).resize();
+});
 </script>
   
