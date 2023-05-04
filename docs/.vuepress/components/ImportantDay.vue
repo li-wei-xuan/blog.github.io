@@ -13,9 +13,14 @@ export default {
       this.demo();
     });
   },
+  mounted() {
+    window.addEventListener("resize", function () {
+      echarts.init(document.getElementById("main")).resize();
+    });
+  },
   methods: {
     demo() {
-      var myChart = echarts.init(document.getElementById("main"));
+      let myChart = echarts.init(document.getElementById("main"));
       var option = {
         tooltip: {
           trigger: "axis",
@@ -29,11 +34,6 @@ export default {
           bottom: "3%",
           containLabel: true,
         },
-        // toolbox: {
-        //   feature: {
-        //     saveAsImage: {},
-        //   },
-        // },
         xAxis: {
           type: "category",
           boundaryGap: false,
@@ -83,9 +83,5 @@ export default {
     },
   },
 };
-
-window.addEventListener("resize", function () {
-  echarts.init(document.getElementById("main")).resize();
-});
 </script>
   
