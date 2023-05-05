@@ -98,6 +98,12 @@ export default defineUserConfig({
           // text: "面试题",
           children: getChildren('docs/docs/interview/')
         },
+      ],
+      "/docs/Uniapp": [
+        {
+          text: "Uniapp",
+          children: getChildren('docs/docs/uniapp/')
+        },
       ]
     },
     // https://www.xicons.org/#/zh-CN 中的carbon
@@ -116,6 +122,7 @@ export default defineUserConfig({
           { text: "JavaScript", link: "/docs/JavaScript/01.shuzuduixiang" },
           { text: "ECMASript", link: "/docs/ECMASript/01.let-constguanjianzi" },
           { text: "Vue", link: "/docs/Vue/01.vueshili" },
+          { text: "Uniapp", link: "/docs/Uniapp/01.huanjingdajian.html" },
           { text: "Git", link: "/docs/Git/01.gitjibenmingling" }
         ],
       },
