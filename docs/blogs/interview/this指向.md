@@ -1,0 +1,95 @@
+---
+title: 跨域请求
+date: 2022-12-05
+tags:
+ - interview
+categories:
+ - interview
+---
+
+### 什么是跨域
+```
+当协议、域名、端口三者，任意一个与当前URL不同，即为跨域。
+```
+
+### 同源限制
+```
+同源策略
+  网页地址：http://www.baidu.com
+  异步请求地址：http://www.baidu.com/api.php
+
+非同源策略
+  网页地址：http://www.baidu.com
+  异步请求地址：http://www.taobao.com/api.php
+```
+
+### JSONP前端跨域
+```
+  JSONP就是用来解决跨域请求问题的
+
+  ajax请求受同源策略影响，不允许进行跨域请求
+  而script标签src属性中的链接却可以访问跨域的js脚本
+  利用这个特性，服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码
+  在src中进行了调用，这样实现了跨域
+```
+#### demo.html
+```js
+  $.ajax({
+      type: "get",
+      async: false,
+      url: "http://www.demo.com/api.php?username=demo&password=123",
+      dataType: "jsonp",
+      jsonp: "callback", //请求php的参数名
+      jsonpCallback: "success",//要执行的回调函数
+  });
+
+  function success(data)
+  {
+      console.log(data);
+  }
+```
+#### api.php
+```php
+    $data = [
+    	'name' => '张三',
+        'age' => 20,
+    ];
+
+    $json = json_encode($data);
+
+    $callback = $_GET['callback'];
+
+    echo "$callback($json)";   //success(json)
+    exit;
+```
+
+### CORS后端跨域
+```php
+跨域资源共享（CORS）是一种网络浏览器的技术规范，它为Web服务器定义了一种方式，允许网页从不同的域名访问其资源
+CORS就是为了让AJAX可以实现可控的跨域访问而生的
+
+只需要在后台中加上响应头来允许域请求
+在被请求的Response header中加入以下设置，就可以实现跨域访问了
+
+//指定允许其他域名访问
+'Access-Control-Allow-Origin:*'//或指定域
+//响应类型
+'Access-Control-Allow-Methods:GET,POST'
+//响应头设置
+'Access-Control-Allow-Headers:x-requested-with,content-type'
+
+
+以PHP为例 设置跨域请求头
+header('Content-Type: text/html;charset=utf-8');
+header('Access-Control-Allow-Origin:*'); // *代表允许任何网址请求
+header('Access-Control-Allow-Methods:POST,GET,OPTIONS,DELETE'); // 允许请求的类型
+header('Access-Control-Allow-Credentials: true'); // 设置是否允许发送 cookies
+header('Access-Control-Allow-Headers: Content-Type,Content-Length,Accept-Encoding,X-Requested-with, Origin'); // 设置允许自定义请求头的字段
+```
+
+### CORS与JSONP相比
+```
+	JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求
+	使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理
+	JSONP主要被老的浏览器支持，但它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS
+```
