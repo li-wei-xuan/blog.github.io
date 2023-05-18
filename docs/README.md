@@ -5,7 +5,7 @@ modules:
   - Banner
   - Blog
   - MdContent
-  # - Footer
+  - Footer
 banner: # banner 模块的配置
   heroText: 做好每一件简单的事
   tagline: 放弃容易，贵在坚持
@@ -30,10 +30,10 @@ blog:
   # socialLinks:
   #   - { icon: 'LogoGithub', link: 'https://github.com/li-wei-xuan' }
 footer: # 底部模块的配置
-  record: 域名备案文案
-  recordLink: 域名备案地址
-  cyberSecurityRecord: 公安备案文案
-  cyberSecurityLink: 公安备案地址
+  record: 粤ICP备2022055403号-1
+  recordLink: https://beian.miit.gov.cn/#/Integrated/index
+  # cyberSecurityRecord: 公安备案文案
+  # cyberSecurityLink: 公安备案地址
   startYear: 2018
 isShowTitleInHome: true
 actionText: About
