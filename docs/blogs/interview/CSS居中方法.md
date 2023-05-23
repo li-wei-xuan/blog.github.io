@@ -209,8 +209,14 @@ categories:
   }
 ```
 ### 未知宽高元素
-```
+```css
   利用2D变化，在水平和垂直方向都反向平移宽高的一半
+  .topTitle {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
 ```
 
 ### 利用flex布局
