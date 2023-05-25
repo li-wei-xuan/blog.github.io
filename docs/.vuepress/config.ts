@@ -118,7 +118,7 @@ export default defineUserConfig({
         // icon: 'List',
         children: [
           { text: "HTML", link: "/docs/HTML/01.HTMLjibenjiegou" },
-          { text: "CSS", link: "/docs/CSS/03.CSSjibenyangshihexuanzeqi" },
+          { text: "CSS", link: "/docs/CSS/01.CSSjichu" },
           { text: "JavaScript", link: "/docs/JavaScript/01.shuzuduixiang" },
           { text: "ECMASript", link: "/docs/ECMASript/01.let-constguanjianzi" },
           { text: "Vue", link: "/docs/Vue/01.vueshili" },
