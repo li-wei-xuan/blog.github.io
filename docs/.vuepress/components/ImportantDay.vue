@@ -8,19 +8,15 @@
 <script>
 import * as echarts from "echarts";
 export default {
-  created() {
-    this.$nextTick(function () {
-      this.demo();
-    });
-  },
   mounted() {
     window.addEventListener("resize", function () {
-      echarts.init(document.getElementById("main")).resize();
+      echarts.init(this.$refs.main).resize();
     });
+    this.getChart();
   },
   methods: {
-    demo() {
-      let myChart = echarts.init(document.getElementById("main"));
+    getChart() {
+      let myChart = echarts.init(this.$refs.main);
       var option = {
         tooltip: {
           trigger: "axis",
