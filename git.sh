@@ -14,7 +14,7 @@ case $num in
     echo "提交代码到github(mac)"
     echo "\n-----------------------------\n"
     echo '开始打包'
-    npm run build || yarn build
+    npm run build
     echo "打包成功"
     cd /Users/yidao1/Desktop/web/li-wei-xuan.github.io
     echo "跳转仓库成功"
