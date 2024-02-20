@@ -22,7 +22,7 @@ export default {
           trigger: "axis",
         },
         legend: {
-          data: ["2020", "2021", "2022", "2023"],
+          data: ["2020", "2021", "2022", "2023", "2024"],
         },
         grid: {
           left: "3%",
@@ -72,6 +72,12 @@ export default {
             type: "line",
             data: [21, 19, 23, 29, 31, 1, 2, 15, 17, 18, 23, 22],
           },
+          {
+            name: "2024",
+            type: "line",
+            color: "red",
+            data: [25],
+          }
         ],
       };
 
