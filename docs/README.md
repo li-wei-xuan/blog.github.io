@@ -30,8 +30,8 @@ blog:
   # socialLinks:
   #   - { icon: 'LogoGithub', link: 'https://github.com/li-wei-xuan' }
 footer: # 底部模块的配置
-  record: 粤ICP备2022055403号-1
-  recordLink: https://beian.miit.gov.cn/#/Integrated/index
+  # record: 粤ICP备2022055403号-1
+  # recordLink: https://beian.miit.gov.cn/#/Integrated/index
   # cyberSecurityRecord: 公安备案文案
   # cyberSecurityLink: 公安备案地址
   startYear: 2018
