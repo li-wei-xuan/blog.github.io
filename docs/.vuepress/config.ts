@@ -2,7 +2,7 @@ import { defineUserConfig } from "vuepress";
 import { recoTheme } from 'vuepress-theme-reco';
 import { getChildren } from 'vuepress-sidebar-atuo';
 
-let http = 'https://img.webvipzone.com/' // 线上地址
+let http = '/' // 线上地址
 let logoUrl = 'images/logo.png' // logo
 let authorAvatar = 'images/head.jpg' // 头像
 
