@@ -12,7 +12,7 @@ banner: # banner 模块的配置
   heroImageStyle:
     maxWidth: 200px
     margin: 0 auto 2rem
-  bgImage: https://img.webvipzone.com/images/bg.jpg
+  bgImage: /images/bg.jpg
   # bgImage: images/bg.jpg #本地
   # bgImageStyle:
   #   height: 450px
