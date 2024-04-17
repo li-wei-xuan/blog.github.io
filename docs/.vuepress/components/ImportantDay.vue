@@ -76,7 +76,7 @@ export default {
             name: "2024",
             type: "line",
             color: "red",
-            data: [25, 0, 5],
+            data: [25, 0, 5, 8],
           }
         ],
       };
