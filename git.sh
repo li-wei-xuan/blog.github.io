@@ -51,7 +51,7 @@ case $num in
     git remote add origin https://gitee.com/li-wei-xuan/li-wei-xuan.github.io.git
     echo "添加远程仓库成功"
     git push -f origin main
-    echo "提交github成功(win)"
+    echo "提交仓库成功"
     ;;
 *)
     echo "\n-----------------------------\n"
