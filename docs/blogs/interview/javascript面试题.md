@@ -61,13 +61,19 @@ console.log(f.arr);
 ### 5. 描述下列代码的执行结果
 
 ```js
-01 function f(count) {
-02    console.log(`foo${count}`);
-03    setTimeout(() => { console.log(`bar${count}`); });
-04 }
-05 f(1);
-06 f(2);
-07 setTimeout(() => { f(3); });
+function f(count) {
+  console.log(`foo${count}`);
+  setTimeout(() => {
+    console.log(`bar${count}`);
+  });
+}
+f(1);
+f(2);
+setTimeout(() => {
+  f(3);
+});
+
+// foo1 foo2 bar1 bar2 foo3 bar3
 ```
 
 ### 6. 描述下列代码的执行结果
@@ -75,7 +81,7 @@ console.log(f.arr);
 ```js
 var a = 2;
 var b = 5;
-console.log(a === 2 || (1 && b === 3) || 4);
+console.log(a === 2 || (1 && b === 3) || 4); // true 逻辑短路
 ```
 
 ### 7. 描述下列代码的执行结果
@@ -122,30 +128,165 @@ export class ButtonWrapper {
 ### 18. 什么是事件监听
 
 ### 19. 什么是 _js_ 的闭包？有什么作用？
+```js
+JavaScript 的闭包是指那些能够访问独立的（自由的）变量的函数
+
+函数在 JavaScript 中是闭包。大多数函数都使用了它们上层作用域中的变量，这些变量即闭包所维护的变量。因为这些变量可能会在外层函数已经执行结束之后的某个时刻被内嵌的函数访问，所以这些变量的值需要被保存起来。
+
+闭包有几个用途和好处：
+访问函数内部的变量：通常情况下，函数内部的变量仅在函数执行期间可用。闭包使得我们可以在函数执行之后访问函数内的变量。
+封装性：通过闭包可以避免全局命名空间的污染，因为在闭包中声明的变量对外部是不可见的，只能通过闭包提供的方法来访问。
+私有性：闭包可以创建私有变量，其他代码不能直接访问这些变量，只能通过闭包提供的公共方法来操作。
+持久性：闭包捕获的环境和变量会一直保存在内存中，直到没有引用时才会被垃圾回收机制回收。
+```
 
 ### 20. 事件委托以及冒泡原理
+```js
+事件委托指的是将事件监听器添加到父元素，然后利用冒泡来处理子元素的事件。
+它的主要优点是可以降低内存占用（因为只需要一个父元素的事件监听器，而不是为每个子元素都添加一个），并且可以在动态添加新的子元素后仍然处理事件。
+
+这与JavaScript中的事件冒泡机制密切相关。事件冒泡指的是事件从最深的节点（通常是事件发生的元素）开始，然后逐级向上传播到最少的节点（通常是文档）。
+如果你在一个元素上设置了事件处理程序，那么这个事件不仅仅会在这个元素上触发，同样也会在它的所有父元素上触发，因为这个行为符合事件冒泡规则。
+```
 
 ### 21. _let const var_ 的区别？什么是块级作用域？如何用？
+```js
+var 全局污染，变量提升，可重复定义
+let const 具有块作用域，不存在变量提升，不可重复定义
+let const 区别
+  const 定义需要初始值，定义后无法修改
+```
 
 ### 22. _ES5_ 的方法实现块级作用域（立即执行函数） _ES6_ 呢？
+```
+// ES5
+(function () {
+  let str = "ES5";
+  console.log(str);
+})();
+
+// ES6
+{
+  let str = "ES6";
+  console.log(str);
+}
+```
 
 ### 23. _ES6_ 箭头函数的特性
+```js
+消除函数的二义性
+
+更短的语法: 箭头函数提供了一个更加简洁的函数声明方式。
+
+不绑定自己的 this: 箭头函数不会创建自己的 this，而是继承自父执行上下文中的 this
+
+没有 arguments 对象: 箭头函数没有自己的 arguments 对象。
+
+不绑定构造函数: 箭头函数不能用作构造函数，因此如果你尝试使用 new 运算符创建一个箭头函数的实例，将会抛出错误。
+
+不绑定原型属性: 箭头函数没有 prototype 属性。
+```
 
 ### 24. 箭头函数与普通函数的区别 ？
 
 ### 25. _JS_ 的基本数据类型有哪些？基本数据类型和引用数据类型的区别
+```js
+值类型(基本类型)
+  字符串（String）、数字(Number)、布尔(Boolean)、空（Null）、未定义（Undefined）、Symbol。
+
+引用数据类型(对象类型)
+  对象(Object)、数组(Array)、函数(Function)，还有两个特殊的对象：正则（RegExp）和日期（Date）。
+```
 
 ### 26. _NaN_ 是什么的缩写
+```
+NaN 是 "Not a Number" 的缩写，直译为 "不是数字"。
+```
 
 ### 27. _JS_ 的作用域类型
+```js
+主要有两种类型的作用域：
+
+全局作用域：
+  在代码中任何外部函数之外声明的变量属于全局作用域。
+  全局作用域中的变量可以在代码的任何其他部分被访问和修改，包括函数内部。
+  全局变量占用全局命名空间，全局变量过多可能会导致命名冲突。
+
+局部作用域：
+函数作用域和块级作用域是局部作用域的两种形式。局部作用域中的变量只能在定义它们的区域内被访问和修改。
+  函数作用域：
+    在函数内部声明的变量拥有函数作用域，这意味着它们仅在函数内部可用。
+    每次当函数被调用时，都会为函数内的局部变量创建一个新的作用域。
+  块级作用域：
+    由 ES6 引入，使用 let 和 const 关键字声明的变量具有块级作用域，这些变量在声明它们的块或子块中是可见的。
+    块是由大括号 {} 包围的一段代码，例如 for 循环、if 语句、以及其他包含在大括号中的语句。
+```
 
 ### 28. _undefined==null_ 返回的结果是什么？_undefined_ 与 _null_ 的区别在哪？
+```js
+console.log(undefined == null) // true
+
+区别
+  undefined 表示未定义，null 代表空值，空引用
+  typeof undefined => undefined, null => Object
+```
 
 ### 29. 写一个函数判断变量类型
+```js
+function getType(variable) {
+  // 先处理null特殊情况
+  if (variable === null) {
+    return "null";
+  }
+
+  // 获取类型字符串，例如[object Array]
+  const type = Object.prototype.toString.call(variable);
+
+  // 正则表达式匹配类型字符串，并提取类型
+  const match = type.match(/\[object (\w+)\]/);
+
+  // 如果匹配成功，返回实际类型的小写形式
+  if (match && match[1]) {
+    return match[1].toLowerCase();
+  }
+
+  // 对其他简单的类型使用typeof
+  return typeof variable;
+}
+// Object.setPrototypeOf 会导致 instanceof 误判
+// [Symbol.toStringTag]: "" 会导致 Object.prototype.toString.call 误判
+```
 
 ### 30. _js_ 的异步处理函数
+```js
+JavaScript的异步处理函数多种多样，最常见的有如下几种：
+回调函数(Callbacks)：这是JavaScript最早的异步处理模式，回调函数（Callback）是一个用于异步处理结果的函数引用。
+
+Promise：Promise 是 ES6 中引入的，旨在解决回调地狱的问题。Promise 对象代表一个异步操作的最终结果。
+
+async/await：async/await 是 ES7 中引入的，它们允许你以同步的方式编写异步代码。在函数前面加上 async 关键字可以使这个函数返回一个 Promise。await 关键字只能在 async 函数内部使用，它会暂停代码的执行，直到 Promise 被解析或拒绝。
+
+Generators：Generator 是 ES6 中引入的。它们是可以暂停执行并在稍后继续的函数。结合 Promise，我们可以用很好看的同步样式的代码来处理异步。
+```
 
 ### 31. _defer_ 与 _async_ 的区别
+```js
+defer 和 async 都是 HTML script 标签的属性，用于控制JavaScript文件的加载和执行时间。
+它们的差异主要体现在以下三个方面：
+1、下载时机：
+  defer 和 async 都允许浏览器异步地下载 JavaScript 文件，即在下载 JS 文件的同时，浏览器将继续解析HTML。
+2、执行时机：
+  async：
+    一旦下载完成，浏览器将尽快执行 JavaScript。
+    这可能会发生在 HTML 还在解析的过程中，因此可能会暂停 HTML 解析。
+  defer：
+    JavaScript 的执行将被推迟到 HTML 解析完毕之后。
+3、执行顺序：
+  async：
+    多个 async 脚本的执行顺序不能保证。它们的执行顺序是下载完成的顺序。
+  defer：
+    多个 defer 脚本将按照在 HTML 文件中出现的顺序依次执行。
+```
 
 ### 32. 浏览器事件循环和任务队列
 
@@ -158,6 +299,10 @@ export class ButtonWrapper {
 ### 36. 继承方式 （美团 19 年）
 
 ### 37. 原始值与引用值 （美团 19 年）
+```js
+原始值传的是值，修改后不改变原来的值
+引用值传的是址，修改后会改变原来的值
+```
 
 ### 38. 描述下列代码的执行结果
 
@@ -197,6 +342,12 @@ console.log(10);
 ```
 
 ### 39. 如何判断数组或对象（美团 19 年）
+```js
+typeof 
+Object.prototype.toString.call 
+instanceof 
+Array.isArray
+```
 
 ### 40. 对象深拷贝与浅拷贝，单独问了 _Object.assign_（美团 19 年）
 
@@ -209,8 +360,6 @@ A.prototype = new B();
 let a = new A();
 console.log(a instanceof B); // true of false ?
 ```
-
-###
 
 ### 43. 内存泄漏（美团 19 年）
 
@@ -225,6 +374,35 @@ console.log(a instanceof B); // true of false ?
 ### 48. 科里化？（搜狗）
 
 ### 49. 防抖和节流？（虾皮）
+```js
+// 防抖
+const debounce = (fn, delay = 500) => {
+  let timer = null;
+  return function (...args) {
+    //清除上一次延时器
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    //重新设置新的延时器
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+};
+
+// 节流
+const throttle = (fn, delay = 1500) => {
+  let lastTime = 0;
+  return function (...args) {
+    const nowTime = Date.now();
+    if (nowTime - lastTime > delay) {
+      fn.apply(this, args);
+      lastTime = nowTime;
+    }
+  };
+};
+```
 
 ### 50. 闭包？（好未来---探讨了 _40_ 分钟）
 

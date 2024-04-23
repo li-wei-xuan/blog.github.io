@@ -93,3 +93,58 @@ call和bind传参相同，多个参数依次传入的；
 apply只有两个参数，第二个参数为数组；
 call和apply都是对函数进行直接调用，而bind方法不会立即调用函数，而是返回一个修改this后的函数。
 ```
+
+## 手写call、bind、apply
+```js
+// call
+Function.prototype.myCall = function (ctx, ...args) {
+    ctx = ctx === null || ctx === undefined ? globalThis : Object(ctx);
+    const key = Symbol();
+    ctx[key] = this;
+    Object.defineProperty(ctx, key, {
+        value: this,
+        enumerable: false,
+    });
+    const result = args ? ctx[key](...args) : ctx[key]();
+    delete ctx[key];
+    return result;
+};
+
+// apply
+Function.prototype.myApply = function (ctx, args) {
+    ctx = ctx === null || ctx === undefined ? globalThis : Object(ctx);
+    const key = Symbol();
+    Object.defineProperty(ctx, key, {
+        value: this,
+        enumerable: false,
+        configurable: true,
+    });
+    const result = args ? ctx[key](...args) : ctx[key]();
+    delete ctx[key];
+    return result;
+};
+
+// bind
+Function.prototype.myBind = function (ctx, ...args) {
+    ctx = ctx === null || ctx === undefined ? globalThis : Object(ctx);
+    const key = Symbol();
+    Object.defineProperty(ctx, key, {
+        value: this,
+        enumerable: false,
+        configurable: true,
+    });
+    return function newFn(...fnArgs) {
+        let result;
+        // 要考虑新函数是不是会当作构造函数
+        if (this instanceof newFn) {
+        // 如果是构造函数则调用new 并且合并参数args，fnArgs
+        result = new ctx[key](...args, ...fnArgs);
+        } else {
+        // 当作普通函数调用 也可以用上面定义的_call
+        result = ctx[key].call(ctx, ...args, ...fnArgs);
+        }
+        delete ctx[key];
+        return result;
+    };
+};
+```

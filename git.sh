@@ -29,7 +29,7 @@ case $num in
     echo "提交github成功(mac)"
     ;;
 3)
-    echo "提交代码到github(win)"
+    echo "提交代码到gitee"
     echo "\n-----------------------------\n"
     git add .
     git commit -m "$(date "+%Y-%m-%d %H:%M:%S")"
