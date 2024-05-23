@@ -7,6 +7,13 @@ categories:
  - interview
 ---
 
+| 调用方式 | 示例 | 函数中的this指向 |
+| --- | --- | --- |
+|通过new调用|	new method	|新对象
+|直接调用|	method()|	全局对象
+|通过对象调用|	obj.method()|	调用的对象
+|call、apply、bind|	method.call(ctx)|	第一个参数
+
 ### 概念
 
 ```js
