@@ -71,6 +71,12 @@ export default defineUserConfig({
           children: getChildren('docs/docs/ECMASript/')
         },
       ],
+      "/docs/TypeSript/": [
+        {
+          text: "TypeSript",
+          children: getChildren('docs/docs/TypeSript/')
+        },
+      ],
       "/docs/Vue/": [
         {
           text: "Vue",
@@ -136,6 +142,7 @@ export default defineUserConfig({
           { text: "CSS", link: "/docs/CSS/01.CSS基础" },
           { text: "JavaScript", link: "/docs/JavaScript/01.数组对象" },
           { text: "ECMASript", link: "/docs/ECMASript/01.let-const关键字" },
+          { text: "TypeSript", link: "/docs/TypeSript/01.快速入门" },
           { text: "Vue", link: "/docs/Vue/01.vue实例" },
           { text: "Uniapp", link: "/docs/Uniapp/01.环境搭建" },
           { text: "Git", link: "/docs/Git/01.git基本命令" }
