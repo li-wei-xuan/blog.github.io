@@ -1,0 +1,89 @@
+import{_ as n,o as s,c as a,a as t}from"./app-EaupiRXX.js";const e={},p=t(`<table><thead><tr><th>调用方式</th><th>示例</th><th>函数中的this指向</th></tr></thead><tbody><tr><td>通过new调用</td><td>new method</td><td>新对象</td></tr><tr><td>直接调用</td><td>method()</td><td>全局对象</td></tr><tr><td>通过对象调用</td><td>obj.method()</td><td>调用的对象</td></tr><tr><td>call、apply、bind</td><td>method.call(ctx)</td><td>第一个参数</td></tr></tbody></table><h3 id="概念" tabindex="-1"><a class="header-anchor" href="#概念"><span>概念</span></a></h3><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre class="language-javascript"><code>在js中，<span class="token keyword">this</span>的意思为“这个<span class="token punctuation">;</span>当前”，是一个指针型变量，它动态指向当前函数的运行环境。
+
+在不同的场景中调用同一个函数，<span class="token keyword">this</span>的指向也可能会发生变化，但是它永远指向其所在函数的真实调用者；
+如果没有调用者，就指向全局对象 window。
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="全局中的this" tabindex="-1"><a class="header-anchor" href="#全局中的this"><span>全局中的this</span></a></h3><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre class="language-javascript"><code>在全局作用域下，<span class="token keyword">this</span>始终指向全局对象window，无论是否是严格模式！
+
+简写：
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token comment">// window</span>
+完整的写法：
+	window<span class="token punctuation">.</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token comment">// 调用 window 下的 console 方法</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="函数中的this" tabindex="-1"><a class="header-anchor" href="#函数中的this"><span>函数中的this</span></a></h3><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre class="language-javascript"><code>普通函数内的<span class="token keyword">this</span>分为两种情况，严格模式下和非严格模式下。
+
+严格模式
+  <span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token string">&#39;use strict&#39;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+  window<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// window</span>
+
+非严格模式
+	<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// window</span>
+  window<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// window</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="对象中的this" tabindex="-1"><a class="header-anchor" href="#对象中的this"><span>对象中的this</span></a></h3><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre class="language-javascript"><code>对象内部方法的<span class="token keyword">this</span>指向调用这些方法的对象，也就是谁调用就指向谁。
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&#39;zhangsan&#39;</span><span class="token punctuation">,</span>
+  <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&#39;xiaoming&#39;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">obj2</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&#39;xiaohong&#39;</span><span class="token punctuation">,</span>
+    <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&#39;xiaoli&#39;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 返回值为 zhangsan ，说明此时this指向obj。</span>
+obj<span class="token punctuation">.</span>obj2<span class="token punctuation">.</span><span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 返回值为xiaohong，说明this指向obj2</span>
+
+总结：
+  函数的定义位置不影响其<span class="token keyword">this</span>指向，<span class="token keyword">this</span>指向只和调用函数的对象有关。
+  多层嵌套的对象，内部方法的<span class="token keyword">this</span>指向离被调用函数最近的对象。
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="箭头函数中的this" tabindex="-1"><a class="header-anchor" href="#箭头函数中的this"><span>箭头函数中的this</span></a></h3><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre class="language-javascript"><code>箭头函数：<span class="token keyword">this</span>指向于函数作用域所用的对象。
+
+箭头函数的重要特征：
+	箭头函数中没有<span class="token keyword">this</span>和arguments，会捕获自己定义所处的外层执行环境，并且继承这个<span class="token keyword">this</span>值<span class="token punctuation">,</span>指向当前定义时所在的对象。
+	箭头函数的<span class="token keyword">this</span>指向在被定义的时候就确定了，之后永远都不会改变。
+  <span class="token function">即使使用call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">、apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">、bind</span><span class="token punctuation">(</span><span class="token punctuation">)</span>等方法改变<span class="token keyword">this</span>指向也不可以
+  
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">&#39;hhh&#39;</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">fn</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 对象window</span>
+
+<span class="token keyword">let</span> <span class="token function-variable function">show</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> show <span class="token punctuation">}</span>
+<span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 对象window</span>
+window<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 对象window</span>
+obj<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 对象window</span>
+window<span class="token punctuation">.</span>obj<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 对象window</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="构造函数中的this" tabindex="-1"><a class="header-anchor" href="#构造函数中的this"><span>构造函数中的this</span></a></h3><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre class="language-javascript"><code>构造函数中的<span class="token keyword">this</span>是指向实例。
+
+<span class="token keyword">class</span> <span class="token class-name">Father</span> 
+<span class="token punctuation">{</span>   
+    <span class="token comment">//构造函数</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> sex<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">=</span> sex 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//实例化得到一个对象</span>
+<span class="token keyword">var</span> xiaoming <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Father</span><span class="token punctuation">(</span><span class="token string">&#39;小明&#39;</span><span class="token punctuation">,</span><span class="token string">&#39;男&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;16&#39;</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xiaoming<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token comment">// 小明</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xiaoming<span class="token punctuation">.</span>sex<span class="token punctuation">)</span> <span class="token comment">// 男</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xiaoming<span class="token punctuation">.</span>age<span class="token punctuation">)</span> <span class="token comment">// 16</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="原型链中的this" tabindex="-1"><a class="header-anchor" href="#原型链中的this"><span>原型链中的this</span></a></h3><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">this</span>这个值在一个继承机制中，仍然是指向它原本属于的对象，而不是从原型链上找到它时，它所属于的对象。
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>`,15),i=[p];function o(c,l){return s(),a("div",null,i)}const d=n(e,[["render",o],["__file","thiszhixiang.html.vue"]]),r=JSON.parse('{"path":"/blogs/interview/thiszhixiang.html","title":"this指向","lang":"zh-CN","frontmatter":{"title":"this指向","date":"2023-05-12T00:00:00.000Z","tags":["interview"],"categories":["interview"]},"headers":[{"level":3,"title":"概念","slug":"概念","link":"#概念","children":[]},{"level":3,"title":"全局中的this","slug":"全局中的this","link":"#全局中的this","children":[]},{"level":3,"title":"函数中的this","slug":"函数中的this","link":"#函数中的this","children":[]},{"level":3,"title":"对象中的this","slug":"对象中的this","link":"#对象中的this","children":[]},{"level":3,"title":"箭头函数中的this","slug":"箭头函数中的this","link":"#箭头函数中的this","children":[]},{"level":3,"title":"构造函数中的this","slug":"构造函数中的this","link":"#构造函数中的this","children":[]},{"level":3,"title":"原型链中的this","slug":"原型链中的this","link":"#原型链中的this","children":[]}],"git":{"createdTime":1683889140000,"updatedTime":1716428611000,"contributors":[{"name":"liweijiang","email":"916215061@qq.com","commits":2},{"name":"lwj","email":"916215061@qq.com","commits":1}]},"filePathRelative":"blogs/interview/this指向.md","readingTime":{"minutes":2.33,"words":700}}');export{d as comp,r as data};

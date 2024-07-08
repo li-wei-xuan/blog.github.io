@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./app-EaupiRXX.js";const r={};function o(n,s){return t(),a("div")}const l=e(r,[["render",o],["__file","1.html.vue"]]),i=JSON.parse('{"path":"/tags/vue/1.html","title":"","lang":"zh-CN","frontmatter":{"layout":"Categories"},"headers":[],"git":{},"filePathRelative":null,"readingTime":{"minutes":0,"words":0}}');export{l as comp,i as data};
